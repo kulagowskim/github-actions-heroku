@@ -13,5 +13,5 @@ jobs:
         host: ${{ secrets.STAGING_HOST }}
         username: ${{ secrets.STAGING_USERNAME }}
         key: ${{ secrets.STAGING_KEY }}
-        port: 22
+        port: ${{ secrets.STAGING_PORT }}
         script: whoami
