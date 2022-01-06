@@ -7,11 +7,12 @@ jobs:
     name: Build and deploy
     runs-on: ubuntu-latest
     steps:
-    - name: SSH commands
-      uses: appleboy/ssh-action@master
+    - name: ls -a via ssh
+      uses: fifsky/ssh-action@master
       with:
+        command: |
+          cd /tmp
+          ls -a
         host: ${{ secrets.STAGING_HOST }}
-        username: ${{ secrets.STAGING_USERNAME }}
-        key: ${{ secrets.STAGING_PASSWORD }}
-        port: ${{ secrets.STAGING_PORT }}
-        script: whoami
+        user: ${{ secrets.STAGING_USER }}
+        key: ${{ secrets.STAGING_KEY}}
