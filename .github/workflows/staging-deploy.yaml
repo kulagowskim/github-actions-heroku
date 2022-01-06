@@ -2,17 +2,11 @@ name: Staging deploy
 on:
   workflow_dispatch:
 
-jobs: 
-  build: 
-    name: Build and deploy
-    runs-on: ubuntu-latest
+job:
+  job_id:
     steps:
-    - name: ls -a via ssh
-      uses: fifsky/ssh-action@master
-      with:
-        command: |
-          cd /tmp
-          ls -a
-        host: ${{ secrets.STAGING_HOST }}
-        user: ${{ secrets.STAGING_USER }}
-        key: ${{ secrets.STAGING_KEY}}
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v0'
+
+    - name: 'Use gcloud CLI'
+      run: 'gcloud info'
