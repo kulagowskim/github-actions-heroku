@@ -1,0 +1,17 @@
+name: Staging deploy
+on:
+  workflow_dispatch:
+
+jobs: 
+  build: 
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: SSH commands
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.STAGING_HOST }}
+        username: ${{ secrets.STAGING_USERNAME }}
+        key: ${{ secrets.STAGING_PASSWORD }}
+        port: ${{ secrets.STAGING_PORT }}
+        script: whoami
