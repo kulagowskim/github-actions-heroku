@@ -1,20 +1,16 @@
 name: Staging deploy
 on:
   workflow_dispatch:
-
-jobs: 
-  aws_cdk: 
-    name: Build and deploy
+  
+jobs:
+  trying-to-use-environment-secrets:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
+    environment: test-env #<---The only difference we need to specify what environment to use for environment secrets
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: test
-        aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY }}
-        aws-region: eu-west-2
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Store variables
+        run: |
+          echo ${{ secrets.AWS_ACCESS_KEY_ID }}
+          echo "DEV_SERVER_URL=${{ secrets.AWS_ACCESS_KEY_ID }}"
