@@ -3,15 +3,9 @@ on:
   workflow_dispatch:
 
 jobs: 
-  build: 
+  aws_cdk: 
     name: Build and deploy
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@v0.1.2
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        port: 22
-        script: whoami
+    - name: Checkout
+      uses: actions/checkout@v2
