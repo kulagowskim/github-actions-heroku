@@ -1,4 +1,4 @@
-name: Staging deploy
+name: Sohost test
 on:
   workflow_dispatch:
 
@@ -9,7 +9,7 @@ jobs:
     environment: sohost
     steps:
     - name: executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@v0.1.2
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
