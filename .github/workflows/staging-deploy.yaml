@@ -5,7 +5,7 @@ on:
 jobs:
   trying-to-use-environment-secrets:
     runs-on: ubuntu-latest
-    environment: test-env #<---The only difference we need to specify what environment to use for environment secrets
+    environment: actions
     steps:
       - name: Checkout
         uses: actions/checkout@v1
