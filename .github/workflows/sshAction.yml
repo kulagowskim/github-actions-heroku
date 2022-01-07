@@ -6,7 +6,7 @@ jobs:
   aws_cdk: 
     name: Build and deploy
     runs-on: ubuntu-latest
-    environment: actions
+    environment: sohost
     steps:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
