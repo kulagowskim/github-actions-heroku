@@ -6,11 +6,14 @@ jobs:
   aws_cdk: 
     name: Build and deploy
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Configure AWS Bredentials
-      uses: aws-actions/configure-aws-credentials@master
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY }}
